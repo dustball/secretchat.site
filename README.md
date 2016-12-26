@@ -20,7 +20,7 @@ Run `nodejs index.js` in the `nodejs` directory.
 
 ### index.php
 
-Psudocode:
+Pseudocode:
 
 ```
 UI:
@@ -35,7 +35,7 @@ goroom()
 
 Note: You can File | Save the output of room.php and use it locally.  It will still be able to encrypt content locally, all javascript served from your hard drive.  It will encrypt locally and send the encrypted bytes to `securesocket.io`.
 
-Psudocode:
+Pseudocode:
 
 ```
 UI:
