@@ -1,6 +1,6 @@
-# securechat.site
+# secretchat.site
 
-[https://securechat.site](https://securechat.site)
+[https://secretchat.site](https://secretchat.site)
 
 ## Requirements
 
