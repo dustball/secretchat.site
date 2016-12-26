@@ -3,6 +3,7 @@
 ## Requirements
 
 PHP - for the web server portion
+
 node.js - for the optional socket.io server
 
 ## Web Installation
