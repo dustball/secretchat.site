@@ -2,8 +2,7 @@
 
 $room = $_REQUEST['room'];
 
-if (strlen($room)!=40) {
-  
+if (strlen($room)!=40) {  
   print "404 Not Found";
   exit;
 }
@@ -91,8 +90,7 @@ if (strlen($room)!=40) {
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
     
       ga('create', 'UA-12748037-19', 'auto');
-      ga('send', 'pageview');
-    
+      ga('send', 'pageview');    
     </script>    
   </body>
 </html>
