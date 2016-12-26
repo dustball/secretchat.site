@@ -1,12 +1,9 @@
 <?php
 
-
 if (!$_SERVER['HTTPS']) {
   header('Location: https://secretchat.site/');
   exit;
 }
-
-
 
 ?><!doctype html>
 <html lang="en">
