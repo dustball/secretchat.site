@@ -57,33 +57,32 @@ if (strlen($room)!=40) {
       socket.emit('subscribe', "<?php echo htmlspecialchars($room); ?>");
       
       function send_message() {
-        $.get( "/send", { 
-            room: "<?php echo htmlspecialchars($room); ?>",
-            message: $('#m').val()
-        }).done(function( json ) {
-          $('#m').val('');
-        }).fail(function( jqxhr, textStatus, error ) {
-            var err = textStatus + ", " + error;
-            console.log( "Request Failed: " + err );      
-        });  
+        socket.emit('secret_message', "<?php echo htmlspecialchars($room); ?>",  $('#m').val());
+        console.log("ok");
         ga('send', 'pageview', 'send_message');
+        $('#m').val('');
       }
       
       $('#messages').append($('<li>').text("Welcome to secretchat.site. This page is mobile-friendly."));
       $('#messages').append($('<li>').text("Encryption connected: 128 8-bit TLS"));      
       $('#messages').append($('<li>').text("Welcome. Messages are NOT stored on server.  Close this window to clear all record of this conversation."));
       $('#messages').append($('<li>').text("Note: you may invite others using the URL of this page."));
+
+      function welcome() {     
+        socket.emit('secret_message', "<?php echo htmlspecialchars($room); ?>",  "A participant has entered the room.");
+      }  
+        
+      setTimeout("welcome()",500);
+      setInterval("update_timer()",1000);
       
-      
-      $.get( "/send", { 
-            room: "<?php echo htmlspecialchars($room); ?>",
-            message: "A participant has entered the room."
-        }).done(function( json ) {
-          $('#m').val('');
-        }).fail(function( jqxhr, textStatus, error ) {
-            var err = textStatus + ", " + error;
-            console.log( "Request Failed: " + err );      
-        });       
+      function update_timer() {
+        if (navigator.onLine && socket && socket.connected) {
+          $("#connected").html("<div style='display:inline-block; background:#3ba770; border-radius: 8px; width:12px; height:12px; margin-right:6px'><div>");    
+        } else {
+          $("#connected").html("<div style='display:inline-block; background:#a52311; border-radius: 8px; width:12px; height:12px; margin-right:6px'><div>");    
+        }  
+      }
+               
     </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
