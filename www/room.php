@@ -18,7 +18,7 @@ if (!$_SERVER['HTTPS']) {
     <title>secretchat.site room</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 14px Helvetica, Arial;}
+      body,td { font: 14px Helvetica, Arial;}
       #sendform { background: #000; padding: 3px; position: absolute; bottom: 0; width: 100%; }
       #sendform input { border: 0; padding: 10px; width: 84%; margin-right: .5%; border-radius:4px }
       #sendform button { width: 13%; background: rgb(130, 224, 255); border: none; padding: 10px; border-radius:4px }
@@ -26,11 +26,22 @@ if (!$_SERVER['HTTPS']) {
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
       #container,body,html {height:100% !important}
+
+      #container {width:800px; margin:0 3px}
+      @media (max-width: 799px) {
+        #container {width:634px;}
+      }        
+      @media (max-width: 639px) {
+        #container {width:494px;}
+      }        
+      @media (max-width: 399px) {
+        #container {width:314px; border:none !important}
+      }
+
     </style>
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="en">
     <link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
     <script type="text/javascript" src="https://rawgit.com/ricmoo/aes-js/master/index.js"></script>
 
@@ -40,16 +51,16 @@ if (!$_SERVER['HTTPS']) {
 
   </head>
   <body>
-    <div style="width:400px; margin:0 auto; border:1px dotted #ccc;  position:relative" id="container">
+    <div style=" margin:0 auto; border:1px dotted #ccc;  position:relative" id="container">
     <div id="login" style="z-index:2; position:absolute; left:0; right:0; top:0; bottom:0; background:white">
     <br><br>
-    <h2 style="margin-left:12px">Login</h2>
+    <h2 style="margin-left:12px">secretchat.site - join room</h2>
     <br>
     <form onsubmit="return login();">
-    <table cellspacing=5>
-      <tr><td align=right>Secret Room Name: </td><td>&nbsp;</td><td><nobr><input type=password style="width:250px" name="room" placeholder="(at least 8 chars)" id="room" maxlength=150 class="ui-corner-all ui-widget" value=""> &nbsp;<span id="len">&nbsp;</span></nobr></td></tr>
-      <tr><td align=right>Handle: </td><td>&nbsp;</td><td><nobr><input type=text style="width:250px" name="handle" placeholder="(your name)" id="handle" maxlength=150 class="ui-corner-all ui-widget" value=""> &nbsp;<span id="len">&nbsp;</span></nobr></td></tr>
-      <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="return login()" class="ui-button ui-corner-all ui-widget">Go to Secret Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
+    <table cellspacing=5 width=100% align=center>
+      <tr><td align=right>Password: </td><td>&nbsp;</td><td><nobr><input type=password style="width:170px" name="room" placeholder="(secret room name)" id="room" maxlength=150 class="ui-corner-all ui-widget" value=""> &nbsp;<span id="len">&nbsp;</span></nobr></td></tr>
+      <tr><td align=right>Handle: </td><td>&nbsp;</td><td><nobr><input type=text style="width:170px" name="handle" placeholder="(your name)" id="handle" maxlength=150 class="ui-corner-all ui-widget" value=""> &nbsp;<span id="len">&nbsp;</span></nobr></td></tr>
+      <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="return login()" class="ui-button ui-corner-all ui-widget">Join Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
     </table>
     </form>
     
@@ -122,7 +133,7 @@ if (!$_SERVER['HTTPS']) {
         }
         var hash = CryptoJS.SHA1(passphrase);
         if (hash!="<?php echo htmlspecialchars($room); ?>") {
-          alert("Secret Room Name did not match.  Sorry.");
+          alert("The password must match the secret room name.");
           return false; 
         }
         window.passphrase = passphrase;
@@ -213,7 +224,11 @@ if (!$_SERVER['HTTPS']) {
         for( var i=0; i < 16; i++ )
           text += possible.charAt(Math.floor(Math.random() * possible.length));
         return text;
-      }           
+      }   
+
+      $(function(){
+          $("#room").focus();
+      });              
     </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
