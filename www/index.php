@@ -15,45 +15,59 @@ if (!$_SERVER['HTTPS']) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     html, body {font-family: 'Droid Sans', sans-serif; }
-    .container {margin:3em auto; max-width:440px;}
+     #container {padding:2.5em 0; margin:0 3px; margin:0 auto; }
+    
+      #container {width:480px;}
+      @media (max-width: 479px) {
+        #container {width:394px; padding:1.5em 0;}
+      }        
+      @media (max-width: 399px) {
+        #container {width:312px; padding:0.5em 0;}
+      }
+
+      .gs-badge {display:none !important}
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div id="container">
   
-    <h1>secretchat.site</h1>
+    <h1 style="margin-bottom:0">secretchat.site</h1>
+    <small><i>Version 2.0 - Dec 26 2016</i></small>
     
+    <br>
     <p>Private online chat - web &amp; mobile friendly. Free.</p>
     
     <p>All messages encrypted with 128-bit AES encryption.  Everything is realtime and messages are not stored on server. Powered by Socket.IO and node.js. Open Source.</p>
     
     <br>
-  
+    <form onsubmit="return goroom();">
     <table cellspacing=5>
-      <tr><td align=right>Secret Room Name: </td><td>&nbsp;</td><td><nobr><input type=text style="width:250px" name="room" placeholder="(at least 8 chars)" id="room" maxlength=150 class="ui-corner-all ui-widget" value=""> &nbsp;<span id="len">&nbsp;</span></nobr></td></tr>
-      <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="goroom()" class="ui-button ui-corner-all ui-widget">Go to Secret Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
+      <tr><td align=right>Secret Room Name: </td><td>&nbsp;</td><td><nobr><input type=text style="width:200px" name="room" placeholder="(at least 8 chars)" id="room" maxlength=150 class="ui-corner-all ui-widget" value=""> &nbsp;<span id="len">&nbsp;</span></nobr></td></tr>
+      <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="return goroom();" class="ui-button ui-corner-all ui-widget">Go to Secret Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
     </table>
   
-  <p><br><br><br>
+  <p><br><br>
   
-  <p style="cursor:pointer" onclick="$('#react').show('slow');">▼ <i>What do you think of this site?</i></p>
   
+  <p>What do you think of this site?</p>
   <br>
-  
-  <div id="react" class="getsocial gs-reaction-button" style="display:none"></div>
+  <div id="react" class="getsocial gs-reaction-button" style=""></div>
   
   </div>
 
   <p>
-  <br>
   <center>
-    <a class="github-button" href="https://github.com/dustball/secretchat.site/fork" data-style="mega" aria-label="Fork dustball/secretchat.site on GitHub">Fork</a>
+
+
+<a class="github-button" href="https://github.com/dustball/secretchat.site/fork" data-icon="octicon-repo-forked" data-style="mega" aria-label="Fork dustball/secretchat.site on GitHub">Fork</a>
+    <a class="github-button" href="https://github.com/dustball" data-style="mega" data-count-href="/dustball/followers" data-count-api="/users/dustball#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @dustball on GitHub">Follow @dustball</a>
+    <a class="github-button" href="https://github.com/ntkme/github-buttons/issues" data-icon="octicon-issue-opened" data-style="mega" data-count-api="/repos/ntkme/github-buttons#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue ntkme/github-buttons on GitHub">Issue</a>
+    
     <br>
-    <br>
-    <a href="https://github.com/dustball/secretchat.site">github.com/dustball/secretchat.site</a>
     <br>
     <br>Copyright &copy; 2017 secretchat.site
+    <br>
     <br>
   </center>
 
@@ -67,12 +81,18 @@ function goroom() {
   if (passphrase.length<8) {
     alert("Please enter a room 8 chars or more.");
     ga('send', 'error_short_roomname');
-    return; 
+    return false; 
   }
   var hash = CryptoJS.SHA1(passphrase);
   
   window.location.href = '/room/' + hash;
+  return false;
 }
+
+$(function(){
+    $("#room").focus();
+});
+
 </script>
 <script>
   // production version will not have google analytics
