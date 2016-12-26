@@ -1,4 +1,14 @@
-<!doctype html>
+<?php
+
+
+if (!$_SERVER['HTTPS']) {
+  header('Location: https://secretchat.site/');
+  exit;
+}
+
+
+
+?><!doctype html>
 <html lang="en">
 <head>
   <title>secretchat.site - private online chat</title>
@@ -17,9 +27,9 @@
   
     <h1>secretchat.site</h1>
     
-    <p>Private online chat - web &amp; mobile friendly.</p>
+    <p>Private online chat - web &amp; mobile friendly. Free.</p>
     
-    <p>All messages encrypted with 128-bit AES encryption.  Everything is realtime and messages are not stored on server. Powered by Socket.IO and node.js. View Source.</p>
+    <p>All messages encrypted with 128-bit AES encryption.  Everything is realtime and messages are not stored on server. Powered by Socket.IO and node.js. Open Source.</p>
     
     <br>
   
@@ -37,6 +47,18 @@
   <div id="react" class="getsocial gs-reaction-button" style="display:none"></div>
   
   </div>
+
+  <p>
+  <br>
+  <center>
+    <a class="github-button" href="https://github.com/dustball/secretchat.site/fork" data-style="mega" aria-label="Fork dustball/secretchat.site on GitHub">Fork</a>
+    <br>
+    <br>
+    <a href="https://github.com/dustball/secretchat.site">github.com/dustball/secretchat.site</a>
+    <br>
+    <br>Copyright &copy; 2017 secretchat.site
+    <br>
+  </center>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
@@ -70,5 +92,6 @@ function goroom() {
 <script type="text/javascript">
 (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = '//api.at.getsocial.io/widget/v1/gs_async.js?id=d6ca81'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();
 </script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
