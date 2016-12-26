@@ -20,25 +20,30 @@ app.get('/secret_message', function(req, res){
 	var room = req.query.room;
 	var message = req.query.message
 
-    	io.sockets.to(""+room).emit('secret_message', {
-        	message: message
-    	});
-
-    	console.log('secret_message', room, message);
+ 	io.sockets.to(""+room).emit('secret_message', {
+     	message: message
+ 	});
 
 	res.end()
 	return
-
 });
 
 
 io.sockets.on('connection', function(socket){
-  console.log("Connection");
+  	console.log("Connection");
 
 	socket.on('subscribe', function(room) {
     		console.log('Joining Room ', room);
     		socket.join(room);
 	});
+
+	socket.on('secret_message', function(room,msg){
+		io.sockets.to(""+room).emit('secret_message', {
+        	message: msg
+    	});
+		
+  });	 
+
 	
 });
 
