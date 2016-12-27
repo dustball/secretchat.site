@@ -44,7 +44,7 @@ if (!$_SERVER['HTTPS']) {
     <form onsubmit="return goroom();">
     <table cellspacing=5>
       <tr><td align=right>Secret Room Name: </td><td>&nbsp;</td><td><nobr><input type=password style="width:200px" name="room" placeholder="(at least 8 chars)" id="room" maxlength=150 class="ui-corner-all ui-widget" value=""> &nbsp;<span id="len">&nbsp;</span></nobr></td></tr>
-      <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="return goroom();" class="ui-button ui-corner-all ui-widget">Go to Secret Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
+      <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="return goroom();" class="ui-button ui-corner-all ui-widget">Create Private Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
     </table>
   
   <p><br><br>

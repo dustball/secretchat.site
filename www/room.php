@@ -65,7 +65,9 @@ if (!$_SERVER['HTTPS']) {
       <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="return login()" class="ui-button ui-corner-all ui-widget">Join Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
     </table>
     </form>
-    
+
+    <br><br>
+    <p style="margin:1em">Share this room via URL:<br><br><input id="shareurl" class="ui-corner-all ui-widget" type="text" value="https://secretchat.site/room/<?php echo htmlspecialchars($salt); ?>/<?php echo htmlspecialchars($room); ?>" style="width:50%; color:#666"><br><br><button class="ui-button ui-corner-all ui-widget" onclick='copyToClipboard(document.getElementById("shareurl"));'>Copy to clipboard</button></p>
     
     </div>
     <div id="connected" style="position:absolute;right:3px;top:5px"></div>
@@ -238,6 +240,56 @@ if (!$_SERVER['HTTPS']) {
           text += possible.charAt(window.crypto.getRandomValues(new Uint32Array(1))[0] % possible.length);
         return text;
       }   
+
+      function copyToClipboard(elem) {
+      	  // create hidden text element, if it doesn't already exist
+          var targetId = "_hiddenCopyText_";
+          var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+          var origSelectionStart, origSelectionEnd;
+          if (isInput) {
+              // can just use the original source element for the selection and copy
+              target = elem;
+              origSelectionStart = elem.selectionStart;
+              origSelectionEnd = elem.selectionEnd;
+          } else {
+              // must use a temporary form element for the selection and copy
+              target = document.getElementById(targetId);
+              if (!target) {
+                  var target = document.createElement("textarea");
+                  target.style.position = "absolute";
+                  target.style.left = "-9999px";
+                  target.style.top = "0";
+                  target.id = targetId;
+                  document.body.appendChild(target);
+              }
+              target.textContent = elem.textContent;
+          }
+          // select the content
+          var currentFocus = document.activeElement;
+          target.focus();
+          target.setSelectionRange(0, target.value.length);
+          
+          // copy the selection
+          var succeed;
+          try {
+          	  succeed = document.execCommand("copy");
+          } catch(e) {
+              succeed = false;
+          }
+          // restore original focus
+          if (currentFocus && typeof currentFocus.focus === "function") {
+              currentFocus.focus();
+          }
+          
+          if (isInput) {
+              // restore prior selection
+              elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+          } else {
+              // clear temporary content
+              target.textContent = "";
+          }
+          return succeed;
+      }
 
       $(function(){
           $("#room").focus();
