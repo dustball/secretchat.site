@@ -2,6 +2,8 @@
 
 [https://secretchat.site](https://secretchat.site)
 
+Not ready for production - yet.
+
 ## Requirements
 
 PHP - for the web server portion
@@ -29,7 +31,7 @@ UI:
 goroom()
  - validate password length
  - generate 16 char salt
- - peform SHA1() on salt + password and 302 bounce to /room/{salt}/{hash}
+ - peform SHA256() on salt + password and 302 bounce to /room/{salt}/{hash}
  - plaintext password never sent to server
 ```
 ### room.php
@@ -44,13 +46,13 @@ UI:
  - collect name (handle) from user
 
 onload
- - get salt and room id from URL (the SHA1 hash) using aes-js
+ - get salt and room id from URL (the SHA256 hash) using aes-js
  - connect to https://securesocket.io:1443 via socket.io
- - subecribe to room based on SHA1 hash
+ - subecribe to room based on SHA256 hash
 
 login() 
  - validate room name (plaintext password) and name (handle)
- - SHA1 the room name and make sure it matches our salt + sha hash
+ - SHA256 the giev salt & room name and make sure it matches our salt + sha hash
  - even if an attacker removes this code, the messages are still encrypted with the plaintext password
  - send message announcing user
  - hide login UI
