@@ -4,8 +4,7 @@ $salt = $_REQUEST['salt'];
 $room = $_REQUEST['room'];
 
 if (strlen($room)!=40 || strlen($salt)!=16) {  
-  http_response_code(404);
-  print "404 Not Found";
+  require_once('404.php');
   exit;
 }
 
