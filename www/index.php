@@ -10,7 +10,7 @@ if (!$_SERVER['HTTPS']) {
 <head>
   <title>secretchat.site - private online chat</title>
   <meta charset="utf-8">
-  <link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" integrity="sha384-12hbHS5VUYVLOm/mmt5zrO3NnhEuXiIwdj3TMACB//xJmJi1lS9lIS89Hwp4E972" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -71,9 +71,9 @@ if (!$_SERVER['HTTPS']) {
     <br>
   </center>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js" integrity="sha384-eCP06z8DA5b3h1iAvoTqYhowiC3tRnny7ukn++hHSIoY8+BRuTBv9A9s38Udf42E" crossorigin="anonymous"></script>
 <script>
 
 function goroom() {

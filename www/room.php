@@ -42,9 +42,9 @@ if (!$_SERVER['HTTPS']) {
     </style>
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="en">
-    <link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/ricmoo/aes-js/master/index.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" integrity="sha384-12hbHS5VUYVLOm/mmt5zrO3NnhEuXiIwdj3TMACB//xJmJi1lS9lIS89Hwp4E972" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js" integrity="sha384-eCP06z8DA5b3h1iAvoTqYhowiC3tRnny7ukn++hHSIoY8+BRuTBv9A9s38Udf42E" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://rawgit.com/ricmoo/aes-js/master/index.js" integrity="sha384-M/c10E44f5lGATHNjTNLhT7QZJZGEZOAE1xwgGtJaoZSVX6ME7BjU9yv2gUo4i5N" crossorigin="anonymous"></script>
 
   
     <meta name="robots" content="noindex,noarchive">
@@ -76,8 +76,8 @@ if (!$_SERVER['HTTPS']) {
     
     </div>
     
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js" integrity="sha384-oGza066+khylclVXEZ3hxALnzokmv86IwCZG1nl05HZmD+9apNXFYb0ovTNiVe4P" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js" integrity="sha384-wciR07FV6RBcI+YEVsZy/bInxpyn0uefUp6Yi9R5r46Qv/yk/osR5nzY31koh9Uq" crossorigin="anonymous"></script>
     <script>
       var socket = io('https://securesocket.io:8443/');
       
