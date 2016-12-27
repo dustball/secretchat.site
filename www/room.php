@@ -235,7 +235,7 @@ if (!$_SERVER['HTTPS']) {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         for( var i=0; i < 16; i++ )
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
+          text += possible.charAt(window.crypto.getRandomValues(new Uint32Array(1))[0] % possible.length);
         return text;
       }   
 
