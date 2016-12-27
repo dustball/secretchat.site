@@ -1,8 +1,9 @@
 <?php
 
+$salt = $_REQUEST['salt'];
 $room = $_REQUEST['room'];
 
-if (strlen($room)!=40) {  
+if (strlen($room)!=40 || strlen($salt)!=16) {  
   http_response_code(404);
   print "404 Not Found";
   exit;
@@ -43,7 +44,7 @@ if (!$_SERVER['HTTPS']) {
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="en">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" integrity="sha384-12hbHS5VUYVLOm/mmt5zrO3NnhEuXiIwdj3TMACB//xJmJi1lS9lIS89Hwp4E972" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js" integrity="sha384-eCP06z8DA5b3h1iAvoTqYhowiC3tRnny7ukn++hHSIoY8+BRuTBv9A9s38Udf42E" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://rawgit.com/ricmoo/aes-js/master/index.js" integrity="sha384-M/c10E44f5lGATHNjTNLhT7QZJZGEZOAE1xwgGtJaoZSVX6ME7BjU9yv2gUo4i5N" crossorigin="anonymous"></script>
 
   
@@ -80,7 +81,7 @@ if (!$_SERVER['HTTPS']) {
     <script src="https://code.jquery.com/jquery-1.11.1.js" integrity="sha384-wciR07FV6RBcI+YEVsZy/bInxpyn0uefUp6Yi9R5r46Qv/yk/osR5nzY31koh9Uq" crossorigin="anonymous"></script>
     <script>
       var socket = io('https://securesocket.io:8443/');
-      
+
       $('form').submit(function(){
         send_message();
         return false;
@@ -141,7 +142,8 @@ if (!$_SERVER['HTTPS']) {
           ga('send', 'error_short_handle');
           return false;
         }
-        var hash = CryptoJS.SHA1(passphrase);
+        var salt = "<?php echo htmlspecialchars($salt); ?>";
+        var hash = CryptoJS.SHA256(salt + passphrase).toString().substr(10,40);
         if (hash!="<?php echo htmlspecialchars($room); ?>") {
           alert("The password must match the secret room name.");
           return false; 

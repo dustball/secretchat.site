@@ -73,7 +73,7 @@ if (!$_SERVER['HTTPS']) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js" integrity="sha384-eCP06z8DA5b3h1iAvoTqYhowiC3tRnny7ukn++hHSIoY8+BRuTBv9A9s38Udf42E" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js" crossorigin="anonymous"></script>
 <script>
 
 function goroom() {
@@ -83,11 +83,21 @@ function goroom() {
     ga('send', 'error_short_roomname');
     return false; 
   }
-  var hash = CryptoJS.SHA1(passphrase);
+  var salt = make_salt();
   
-  window.location.href = '/room/' + hash;
+  var hash = CryptoJS.SHA256(salt+passphrase).toString().substr(10,40);
+  
+  window.location.href = '/room/' + salt + '/' + hash;
   return false;
 }
+
+function make_salt() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for( var i=0; i < 16; i++ )
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}  
 
 $(function(){
     $("#room").focus();

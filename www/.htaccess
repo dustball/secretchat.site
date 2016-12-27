@@ -1,6 +1,6 @@
 RewriteEngine on
 
-RewriteRule ^room/(.*)$ room.php?room=$1
+RewriteRule ^room/(.*)/(.*)$ room.php?salt=$1&room=$2
 
 ErrorDocument 404 /404.php
 ErrorDocument 403 /404.php
