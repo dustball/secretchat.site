@@ -32,7 +32,7 @@ if (!$_SERVER['HTTPS']) {
 
   <div id="container">
   
-    <h1 style="margin-bottom:0">secretchat.site</h1>
+    <h1 style="margin-bottom:0">🔒 secretchat.site</h1>
     <small><i>Version 2.0 - Dec 26 2016</i></small>
     
     <br>
