@@ -3,6 +3,7 @@
 $room = $_REQUEST['room'];
 
 if (strlen($room)!=40) {  
+  http_response_code(404);
   print "404 Not Found";
   exit;
 }
@@ -78,7 +79,7 @@ if (!$_SERVER['HTTPS']) {
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      var socket = io('https://securesocket.io:1443/');
+      var socket = io('https://securesocket.io:8443/');
       
       $('form').submit(function(){
         send_message();
@@ -100,10 +101,10 @@ if (!$_SERVER['HTTPS']) {
         ga('send', 'pageview', 'send_message');        
       }
       
-      $('#messages').append($('<li>').text("Welcome to secretchat.site. This page is mobile-friendly."));
       $('#messages').append($('<li>').text("Encryption connected with 128 8-bit TLS."));      
-      $('#messages').append($('<li>').text("Welcome. Messages are NOT stored on server.  Close this window to clear all record of this conversation."));
-      $('#messages').append($('<li>').text("Note: you may invite others using the URL of this page."));
+      $('#messages').append($('<li>').text("Welcome to secretchat.site. This page is mobile-friendly."));
+      $('#messages').append($('<li>').text("Note: Messages are NOT stored on server.  Closing this window will clear all record of this conversation."));
+      $('#messages').append($('<li>').text("Note: you may invite others using the URL of this page. They will need to know the room name (password)."));
       
       setInterval("update_timer()",1000);
       
@@ -151,7 +152,8 @@ if (!$_SERVER['HTTPS']) {
         
         $('#m').val(handle+" has entered the room.")
         encrypt(true);
-         
+
+        $('#m').focus(); 
         return false;
       }
       
