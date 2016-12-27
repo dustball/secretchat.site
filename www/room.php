@@ -13,6 +13,9 @@ if (!$_SERVER['HTTPS']) {
   exit;
 }
 
+header('X-Frame-Options: SAMEORIGIN');
+header('X-Content-Type-Options: nosniff');
+
 ?><!doctype html>
 <html>
   <head>
