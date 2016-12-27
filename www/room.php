@@ -76,8 +76,8 @@ if (!$_SERVER['HTTPS']) {
     
     </div>
     
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js" integrity="sha384-oGza066+khylclVXEZ3hxALnzokmv86IwCZG1nl05HZmD+9apNXFYb0ovTNiVe4P" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js" integrity="sha384-wciR07FV6RBcI+YEVsZy/bInxpyn0uefUp6Yi9R5r46Qv/yk/osR5nzY31koh9Uq" crossorigin="anonymous"></script>
     <script>
       var socket = io('https://securesocket.io:8443/');
       

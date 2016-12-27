@@ -10,7 +10,7 @@ if (!$_SERVER['HTTPS']) {
 <head>
   <title>secretchat.site - private online chat</title>
   <meta charset="utf-8">
-  <link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" integrity="sha384-12hbHS5VUYVLOm/mmt5zrO3NnhEuXiIwdj3TMACB//xJmJi1lS9lIS89Hwp4E972" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
