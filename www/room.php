@@ -55,7 +55,7 @@ if (!$_SERVER['HTTPS']) {
     <div style=" margin:0 auto; border:1px dotted #ccc;  position:relative" id="container">
     <div id="login" style="z-index:2; position:absolute; left:0; right:0; top:0; bottom:0; background:white">
     <br><br>
-    <h2 style="margin-left:12px">secretchat.site - join room</h2>
+    <h2 style="margin-left:12px">🔒 secretchat.site - join room</h2>
     <br>
     <form onsubmit="return login();">
     <table cellspacing=5 width=100% align=center>
@@ -104,7 +104,7 @@ if (!$_SERVER['HTTPS']) {
       $('#messages').append($('<li>').text("Encryption connected with 128 8-bit TLS."));      
       $('#messages').append($('<li>').text("Welcome to secretchat.site. This page is mobile-friendly."));
       $('#messages').append($('<li>').text("Note: Messages are NOT stored on server.  Closing this window will clear all record of this conversation."));
-      $('#messages').append($('<li>').text("Note: you may invite others using the URL of this page. They will need to know the room name (password)."));
+      $('#messages').append($('<li>').text("Note: You may invite others using the URL of this page. They will need to know the room name (password)."));
       
       setInterval("update_timer()",1000);
       
