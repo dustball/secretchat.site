@@ -1,15 +1,6 @@
-
 RewriteEngine on
 
 RewriteRule ^room/(.*)$ room.php?room=$1
-RewriteRule ^room2/(.*)$ room2.php?room=$1
-RewriteRule ^send$ send.php [qsappend]
 
-
-#RewriteRule ^purchase/(.+).buy$ purchase/index.php?fb_id=$1
-#RewriteRule ^payment$ payment.php
-#RewriteRule ^number/(\d+)$ number.php?id=$1 
-#RewriteRule ^landing/(.*)$ landing.php?k=$1 [qsappend]
-#RewriteRule ^pricing$ pricing.html?k=$1 [qsappend]
-#RewriteRule ^security/?(.*)$ encryption.php?k=$1 [qsappend]
-#RewriteRule ^encryption/?(.*)$ encryption.php?k=$1 [qsappend]
+ErrorDocument 404 /404.php
+ErrorDocument 403 /404.php
