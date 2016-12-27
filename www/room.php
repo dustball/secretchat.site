@@ -19,9 +19,9 @@ if (!$_SERVER['HTTPS']) {
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body,td { font: 14px Helvetica, Arial;}
-      #sendform { background: #000; padding: 3px; position: absolute; bottom: 0; width: 100%; }
-      #sendform input { border: 0; padding: 10px; width: 84%; margin-right: .5%; border-radius:4px }
-      #sendform button { width: 13%; background: rgb(130, 224, 255); border: none; padding: 10px; border-radius:4px }
+      #sendform { background: #ccc; padding: 8px; position: absolute; bottom: 0; width: 100%; }
+      #sendform input { border: 0; padding: 10px; width: 83%; margin-right: .5%; border-radius:4px }
+      #sendform button { color:white; width: 15%; background: #F48401; border: none; padding: 10px; border-radius:4px }
       #messages { list-style-type: none; margin: 0; padding: 0; overflow-x:scroll; height:100%; width:100%;padding-bottom:3em }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
@@ -101,14 +101,23 @@ if (!$_SERVER['HTTPS']) {
       }
       
       $('#messages').append($('<li>').text("Welcome to secretchat.site. This page is mobile-friendly."));
-      $('#messages').append($('<li>').text("Encryption connected: 128 8-bit TLS"));      
+      $('#messages').append($('<li>').text("Encryption connected with 128 8-bit TLS."));      
       $('#messages').append($('<li>').text("Welcome. Messages are NOT stored on server.  Close this window to clear all record of this conversation."));
       $('#messages').append($('<li>').text("Note: you may invite others using the URL of this page."));
       
       setInterval("update_timer()",1000);
       
       function update_timer() {
-        if (navigator.onLine && socket && socket.connected) {
+        var onl = navigator.onLine && socket && socket.connected;
+        if (onl!=window.lastonl) {
+          if (onl) {
+            $('#messages').append($('<li>').text('You are now ONLINE.'));
+          } else {
+            $('#messages').append($('<li>').text('You have been disconnected. You will miss any messages while offline.'));
+          }            
+        }
+        window.lastonl = onl;
+        if (onl) {
           $("#connected").html("<div style='display:inline-block; background:#3ba770; border-radius: 8px; width:12px; height:12px; margin-right:6px'><div>");    
         } else {
           $("#connected").html("<div style='display:inline-block; background:#a52311; border-radius: 8px; width:12px; height:12px; margin-right:6px'><div>");    
@@ -119,7 +128,7 @@ if (!$_SERVER['HTTPS']) {
         if (window.passphrase) {
           return false;
         }
-        var passphrase = $("#room").val().toLowerCase();
+        var passphrase = $("#room").val().toLowerCase().trim();
         if (passphrase.length<8) {
           alert("Please enter a room 8 chars or more.");
           ga('send', 'error_short_roomname');
