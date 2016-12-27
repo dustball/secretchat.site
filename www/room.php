@@ -67,7 +67,9 @@ if (!$_SERVER['HTTPS']) {
     </form>
 
     <br><br>
-    <p style="margin:1em">Share this room via URL:<br><br><input id="shareurl" class="ui-corner-all ui-widget" type="text" value="https://secretchat.site/room/<?php echo htmlspecialchars($salt); ?>/<?php echo htmlspecialchars($room); ?>" style="width:50%; color:#666"><br><br><button class="ui-button ui-corner-all ui-widget" onclick='copyToClipboard(document.getElementById("shareurl"));'>Copy to clipboard</button></p>
+    <h3 style="margin-left:12px">🔒 Share Private Room URL (password required)</h3>
+    
+    <p style="margin:1.5em 0 1em 3em">Share this room via URL:<br><br><input id="shareurl" class="ui-corner-all ui-widget" type="text" value="https://secretchat.site/room/<?php echo htmlspecialchars($salt); ?>/<?php echo htmlspecialchars($room); ?>" style="width:320px; color:#666"><br><br><button class="ui-button ui-corner-all ui-widget" onclick='copyToClipboard(document.getElementById("shareurl")); $("#copied").show();'>Copy to clipboard</button> <span id="copied" style="display:none">&nbsp; Copied</span></p>
     
     </div>
     <div id="connected" style="position:absolute;right:3px;top:5px"></div>
