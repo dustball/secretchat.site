@@ -14,15 +14,15 @@ server.listen(1443);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket){
+	
   	console.log("Connection");
 
 	socket.on('subscribe', function(room) {
-    		console.log('Joining Room ', room);
     		socket.join(room);
 	});
 
 	socket.on('secret_message', function(room,msg){
-		io.sockets.to(""+room).emit('secret_message', {
+		io.sockets.to(''+room).emit('secret_message', {
         	message: msg
     	});		
 		
