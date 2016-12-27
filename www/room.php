@@ -44,7 +44,7 @@ if (!$_SERVER['HTTPS']) {
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="en">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" integrity="sha384-12hbHS5VUYVLOm/mmt5zrO3NnhEuXiIwdj3TMACB//xJmJi1lS9lIS89Hwp4E972" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js" integrity="sha384-qZaSe/P6nv2mOz9Nu4R/FYkRKUKCp6jqy5bzVdNJ7/HA/26eOigjvRhgmKpXiKow" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://rawgit.com/ricmoo/aes-js/master/index.js" integrity="sha384-M/c10E44f5lGATHNjTNLhT7QZJZGEZOAE1xwgGtJaoZSVX6ME7BjU9yv2gUo4i5N" crossorigin="anonymous"></script>
 
   
