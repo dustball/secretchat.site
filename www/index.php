@@ -50,7 +50,7 @@ header('X-Content-Type-Options: nosniff');
       <tr><td align=right>&nbsp;</td><td>&nbsp;</td><td><button  style="margin-top:.5em" onclick="return goroom();" class="ui-button ui-corner-all ui-widget">Create Private Room</button> &nbsp;<span id="len2">&nbsp;</span></td></tr>
     </table>
   
-  <p><br><br>
+  <p><br>
   
   
   </div>
@@ -58,6 +58,10 @@ header('X-Content-Type-Options: nosniff');
   <p>
   <center>
 
+<a href="https://chrome.google.com/webstore/detail/secretchatsite/joefgdcdjeihemhaidnphaeealjfjlkk"><img src="ChromeWebStore_Badge_v2_496x150.png" width=220 alt="availiable in the chrome web store" style="border:1px dotted #ccc; border-radius:12px" /></a>
+
+
+<br><br><br>
 
 <a class="github-button" href="https://github.com/dustball/secretchat.site/fork" data-icon="octicon-repo-forked" data-style="mega" aria-label="Fork dustball/secretchat.site on GitHub">Fork</a>
     <a class="github-button" href="https://github.com/dustball" data-style="mega" data-count-href="/dustball/followers" data-count-api="/users/dustball#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @dustball on GitHub">Follow @dustball</a>
