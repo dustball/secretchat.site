@@ -58,7 +58,7 @@ header('X-Content-Type-Options: nosniff');
   <p>
   <center>
 
-<a href="https://chrome.google.com/webstore/detail/secretchatsite/joefgdcdjeihemhaidnphaeealjfjlkk"><img src="ChromeWebStore_Badge_v2_496x150.png" width=220 alt="availiable in the chrome web store" style="border:1px dotted #ccc; border-radius:12px" /></a>
+<a href="https://chrome.google.com/webstore/detail/secretchatsite/joefgdcdjeihemhaidnphaeealjfjlkk"><img src="chrome.png" width=220 alt="availiable in the chrome web store" style="border:1px dotted #ccc; border-radius:12px" /></a>
 
 
 <br><br><br>
