@@ -103,5 +103,6 @@ header('X-Content-Type-Options: nosniff');
   });
 
 </script>
+<script async defer src="https://buttons.github.io/buttons.js" integrity="sha384-zmZTyIB5t+YRUXvNuZ+PpP4wvjYLB4ULoyAG2x0Ftc050TMG+Xvv+NiUYiEQPAGk" crossorigin="anonymous"></script>
 </body>
 </html>
