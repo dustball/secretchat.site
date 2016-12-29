@@ -53,10 +53,6 @@ header('X-Content-Type-Options: nosniff');
   <p><br><br>
   
   
-  <p>What do you think of this site?</p>
-  <br>
-  <div id="react" class="getsocial gs-reaction-button" style=""></div>
-  
   </div>
 
   <p>
@@ -79,49 +75,33 @@ header('X-Content-Type-Options: nosniff');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js" integrity="sha384-qZaSe/P6nv2mOz9Nu4R/FYkRKUKCp6jqy5bzVdNJ7/HA/26eOigjvRhgmKpXiKow" crossorigin="anonymous"></script>
 <script>
 
-function goroom() {
-  var passphrase = $("#room").val().toLowerCase().trim();
-  if (passphrase.length<8) {
-    alert("Please enter a room 8 chars or more.");
-    ga('send', 'error_short_roomname');
-    return false; 
+  function goroom() {
+    var passphrase = $("#room").val().toLowerCase().trim();
+    if (passphrase.length<8) {
+      alert("Please enter a room 8 chars or more.");
+      ga('send', 'error_short_roomname');
+      return false; 
+    }
+    var salt = make_salt();
+    
+    var hash = CryptoJS.SHA256(salt+passphrase).toString().substr(10,40);
+    
+    window.location.href = '/room/' + salt + '/' + hash;
+    return false;
   }
-  var salt = make_salt();
   
-  var hash = CryptoJS.SHA256(salt+passphrase).toString().substr(10,40);
+  function make_salt() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 16; i++ )
+      text += possible.charAt(window.crypto.getRandomValues(new Uint32Array(1))[0] % possible.length);
+    return text;
+  }  
   
-  window.location.href = '/room/' + salt + '/' + hash;
-  return false;
-}
-
-function make_salt() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for( var i=0; i < 16; i++ )
-    text += possible.charAt(window.crypto.getRandomValues(new Uint32Array(1))[0] % possible.length);
-  return text;
-}  
-
-$(function(){
-    $("#room").focus();
-});
+  $(function(){
+      $("#room").focus();
+  });
 
 </script>
-<script>
-  // production version will not have google analytics
-  
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-12748037-19', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript">
-(function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = '//api.at.getsocial.io/widget/v1/gs_async.js?id=d6ca81'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();
-</script>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
